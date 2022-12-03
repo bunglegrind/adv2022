@@ -14,7 +14,7 @@
   },
   "type": "module",
   "devDependencies": {
-    "faucet": "^0.0.3",
+    "tap-spec-emoji": "^6.1.2",
     "tape": "^5.6.1"
   }
 }

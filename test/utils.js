@@ -12,8 +12,8 @@ test("process a regular day + phase (A,B)", function (t) {
 
 
 test("invalid options throw exceptions", function (t) {
-    t.throws(() => utils.process(undefined), /Invalid options/);
-    t.throws(() => utils.process([]), /Invalid options/);
+    t.throws(() => utils.process(""), /Invalid options/);
+    t.throws(() => utils.process("0a"), /Invalid options/);
     t.throws(() => utils.process("1c"), /Invalid options/);
     t.throws(() => utils.process("easter"), /Invalid options/);
     t.throws(() => utils.process("26a"), /Invalid options/);

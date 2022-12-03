@@ -2,15 +2,18 @@ import * as R from "ramda";
 
 
 
-const process = R.pipe(
-    function (x) {
-        if (typeof x !== "string") {
+const process =R.pipe(
+    R.match(/^(\d{1,2})(a|b)$/i),
+    R.tail,
+    R.when(
+        (x) => (
+            x.length !== 2
+            || (Number(x[0]) > 25 || Number(x[0]) === 0)
+        ),
+        function () {
             throw new Error("Invalid options");
         }
-        return x;
-    },
-    R.match(/^(\d+)(a|b)$/i),
-    R.tail,
+    ),
     R.map(R.toLower),
     R.zipObj(["day", "phase"])
 );

@@ -46,3 +46,8 @@ test("expecting sample returns correct value", function (t) {
     t.plan(1);
     t.equal(libs.findLargestAmountOfCalories(libs.parseInput(sample)), 24000);
 });
+
+test("expecting sample returns correct value (b)", function (t) {
+    t.plan(1);
+    t.equal(libs.findSumThreeLargestAmountOfCalories(libs.parseInput(sample)), 45000);
+});

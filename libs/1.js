@@ -7,13 +7,30 @@ const parseInput = R.pipe(
 
 const calcCalories = R.sum;
 
-const findLargestAmountOfCalories = R.reduce(
-    (acc, x) => calcCalories(x) > acc ? calcCalories(x) : acc,
-    0
-);
+const findNLargestSum = (n) => (data) => R.pipe(
+    R.map(calcCalories),
+    R.sort((a, b) => b - a),
+    R.slice(0, n),
+    R.sum
+)(data);
+
+const findLargestAmountOfCalories = findNLargestSum(1);
+
+const findSumThreeLargestAmountOfCalories = findNLargestSum(3);
 
 export default Object.freeze({
     parseInput,
     calcCalories,
-    findLargestAmountOfCalories
+    findLargestAmountOfCalories,
+    findSumThreeLargestAmountOfCalories,
+    exec: {
+        a: R.pipe(
+            parseInput,
+            findLargestAmountOfCalories
+        ),
+        b: R.pipe(
+            parseInput,
+            findSumThreeLargestAmountOfCalories
+        )
+    }
 });
