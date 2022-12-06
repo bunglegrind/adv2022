@@ -29,19 +29,19 @@ test("find start marker", function (t) {
 });
 
 test("sample return expect outcome A", function (t) {
-        t.equal(libs.exec.a(samples[0]), 7);
-        t.equal(libs.exec.a(samples[1]), 5);
-        t.equal(libs.exec.a(samples[2]), 6);
-        t.equal(libs.exec.a(samples[3]), 10);
-        t.equal(libs.exec.a(samples[4]), 11);
-        t.end();
+    t.equal(libs.exec.a(samples[0]), 7);
+    t.equal(libs.exec.a(samples[1]), 5);
+    t.equal(libs.exec.a(samples[2]), 6);
+    t.equal(libs.exec.a(samples[3]), 10);
+    t.equal(libs.exec.a(samples[4]), 11);
+    t.end();
 });
 
 test("sample return expect outcome B", function (t) {
-            t.equal(libs.exec.b(samples[0]), 19);
-            t.equal(libs.exec.b(samples[1]), 23);
-            t.equal(libs.exec.b(samples[2]), 23);
-            t.equal(libs.exec.b(samples[3]), 29);
-            t.equal(libs.exec.b(samples[4]), 26);
-            t.end();
+    t.equal(libs.exec.b(samples[0]), 19);
+    t.equal(libs.exec.b(samples[1]), 23);
+    t.equal(libs.exec.b(samples[2]), 23);
+    t.equal(libs.exec.b(samples[3]), 29);
+    t.equal(libs.exec.b(samples[4]), 26);
+    t.end();
 });

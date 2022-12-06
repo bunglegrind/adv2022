@@ -52,10 +52,12 @@ test("create stack from array", function (t) {
 
 test("read an action", function (t) {
     t.deepEqual(
-        libs.parseAction("move 1 from 2 to 1"), {from: 2, to: 1, repeat: 1}
+        libs.parseAction("move 1 from 2 to 1"),
+        {from: 2, to: 1, repeat: 1}
     );
     t.deepEqual(
-        libs.parseAction("move 4 from 12 to 134"), {from: 12, to: 134, repeat: 4}
+        libs.parseAction("move 4 from 12 to 134"),
+        {from: 12, to: 134, repeat: 4}
     );
     t.end();
 });
@@ -108,6 +110,6 @@ test("move crane 9001 according to actions", function (t) {
 });
 
 test("sample return expect outcome B", function (t) {
-        t.equal(libs.exec.b(sample), "MCD");
-        t.end();
+    t.equal(libs.exec.b(sample), "MCD");
+    t.end();
 });
