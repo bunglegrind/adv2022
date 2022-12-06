@@ -10,11 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ramda": "^0.28.0",
-    "tap-color": "^1.2.0"
+    "ramda": "^0.28.0"
   },
   "type": "module",
   "devDependencies": {
+    "tap-color": "^1.2.0",
     "tape": "^5.6.1"
   }
 }
