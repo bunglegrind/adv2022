@@ -15,8 +15,7 @@ function tree({label, size = 0, pt}) {
     const myself = Object.freeze({
         parent: () => pt,
         children,
-        size,
-        calcSize: () => fold((a, n) => a + n.size, 0, myself),
+        calcSize: () => fold((a, n) => a + n.calcSize(), 0, myself),
         addChild: function (opts) {
             if (!isDir()) {
                 throw "Cannot add an item to a file";
