@@ -5,19 +5,12 @@ const parseInput = R.split("\n");
 function tree({label, size = 0, pt}) {
     const children = (!size ? [] : undefined);
     const isDir = () => size === 0;
-    const fold = R.curry(function reduce(reducerFn, init, node) {
-        const acc = reducerFn(init, node);
-        if (!node.isDir()) {
-            return acc;
-        }
-        return node.children.reduce(fold(reducerFn), acc);
-    });
     const myself = Object.freeze({
         parent: () => pt,
         children,
         calcSize: () => (
             isDir()
-            ? fold((a, n) => a + n.calcSize(), 0, myself)
+            ? children.reduce((a, n) => a + n.calcSize(), 0)
             : size
         ),
         addChild: function (opts) {
