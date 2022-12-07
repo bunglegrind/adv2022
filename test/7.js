@@ -31,7 +31,6 @@ test("creates an empty tree", function (t) {
     t.deepEqual(Object.keys(tree), [
         "parent",
         "children",
-        "size",
         "calcSize",
         "addChild",
         "isDir",
