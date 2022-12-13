@@ -189,7 +189,34 @@ test("sample return expect outcome A", function (t) {
     t.end();
 });
 
-test.skip("sample return expect outcome B", function (t) {
-    t.equal(libs.exec.b(anotherSample), 36);
+test("sprite starts at left", function (t) {
+    const sim = libs.sim(libs.parseInput(sample));
+    t.deepEqual(sim.sprite(1), [0, 1, 2]);
+    t.deepEqual(sim.sprite(2), [0, 1, 2]);
+    t.deepEqual(sim.sprite(3), [15, 16, 17]);
+    t.end();
+});
+
+test("draw pixel", function (t) {
+    const sim = libs.sim(libs.parseInput(sample));
+    t.equal(sim.pixel(1), "#");
+    t.equal(sim.pixel(2), "#");
+    t.equal(sim.pixel(3), ".");
+    t.equal(sim.pixel(5), "#");
+    t.equal(sim.pixel(10), "#");
+    t.equal(sim.pixel(21), "#");
+    t.equal(sim.pixel(41), "#");
+    t.equal(sim.pixel(44), ".");
+    t.end();
+});
+
+test("sample return expect outcome B", function (t) {
+    t.equal(libs.exec.b(sample), `##..##..##..##..##..##..##..##..##..##..
+###...###...###...###...###...###...###.
+####....####....####....####....####....
+#####.....#####.....#####.....#####.....
+######......######......######......####
+#######.......#######.......#######.....
+`);
     t.end();
 });
