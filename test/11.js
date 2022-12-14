@@ -51,8 +51,36 @@ test("parse a single monkey", function (t) {
     t.end();
 });
 
+test("find next monkey to send the item", function (t) {
+    let fail = true;
+    libs.monkey({
+        id: 3,
+        items: [74],
+        operation: {
+            op: "+",
+            o1: "old",
+            o2: 3
+        },
+        divisible: 17,
+        "true": 0,
+        "false": 1
+    }).round({
+        1: {
+            receive: function (item) {
+                fail = false;
+                t.equal(item, 25);
+            }
+        }
+    });
+    if (fail) {
+        t.fail();
+    }
+    t.end();
+});
 
-test.skip("sample return expect outcome A", function (t) {
+
+test("sample return expect outcome A", function (t) {
+    t.equal(libs.exec.a(sample), 10605);
     t.end();
 });
 
