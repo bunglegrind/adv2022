@@ -53,7 +53,7 @@ test("parse a single monkey", function (t) {
 
 test("find next monkey to send the item", function (t) {
     let fail = true;
-    libs.monkey({
+    libs.monkey(libs.defaultDeworry, {
         id: 3,
         items: [74],
         operation: {
@@ -84,6 +84,7 @@ test("sample return expect outcome A", function (t) {
     t.end();
 });
 
-test.skip("sample return expect outcome B", function (t) {
+test("sample return expect outcome B", function (t) {
+    t.equal(libs.exec.b(sample), 2713310158);
     t.end();
 });
