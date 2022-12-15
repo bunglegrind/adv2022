@@ -35,6 +35,31 @@ const parseInput = function (data) {
     };
 }
 
+function graph(data) {
+    const {s, e, matrix} = parseInput(data);
+    const rows = matrix.length;
+    const columns = R.head(matrix).length;
+    function get([x, y]) {
+        if(matrix[x] === undefined) {
+            return undefined;
+        }
+        return matrix[x][y];
+    }
+
+    const walkable = (a) => (b) => ((a + 1) === b) || (a > b)
+    function dirs(position) {
+        const isWalkable = walkable(matrix.get(position));
+        const d = [];
+
+        return d;
+
+    }
+    return Object.freeze({
+        get,
+        dirs
+    });
+}
+
 export default Object.freeze({
     parseInput,
     exec: {

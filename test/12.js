@@ -27,6 +27,12 @@ accszExk`
     t.end();
 });
 
+test("assess allowed directions", function (t) {
+    const graph = libs.graph("Sac\nbE\nazx");
+    t.deepEqual(graph.dirs([0, 0]), [[0, 1], [1, 0]]);
+    t.end();
+});
+
 
 test.skip("sample return expect outcome A", function (t) {
     t.equal(libs.exec.a(sample), 31);
