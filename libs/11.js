@@ -64,11 +64,12 @@ function monkey({id, items, operation, divisible, ...sendTo}) {
             const {to, worry} = examine(item);
             inspections += 1;
             monkeys[to].receive(worry);
+            round(monkeys);
         }
     }
 
     return Object.freeze({
-        inspections,
+        inspections: () => inspections,
         receive,
         round,
         items
@@ -85,14 +86,12 @@ export default Object.freeze({
             let i = 1;
             while (i < 21) {
                 monkeys.forEach((m) => m.round(monkeys));
-                monkeys.forEach((m) => console.log(m.items));
-                console.log("-----");
                 i += 1;
             }
             const inspections = R.sort(
-                (a,b) => a - b, R.pluck("inspections", monkeys)
+                (a,b) => b - a, R.map((m) => m.inspections(), monkeys)
             );
-            return R.sum(R.slice(0, 2, inspections));
+            return inspections[0] * inspections[1];
         },
         b: () => {}
     }
