@@ -46,7 +46,7 @@ function graph(data) {
         return matrix[x][y];
     }
 
-    const walkable = (a) => (b) => ((a + 1) === b) || (a > b)
+    const walkable = (a) => (b) => ((a + 1) === b) || (a > b);
     function dirs(position) {
         const isWalkable = walkable(matrix.get(position));
         const d = [];
