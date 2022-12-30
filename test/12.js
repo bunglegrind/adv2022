@@ -29,7 +29,20 @@ accszExk`
 
 test("assess allowed directions", function (t) {
     const graph = libs.graph("Sac\nbE\nazx");
-    t.deepEqual(graph.dirs([0, 0]), [[0, 1], [1, 0]]);
+    t.deepEqual(graph.dirs([0, 0]), [[1, 0]]);
+    t.end();
+});
+
+
+test("find straightforward path", function (t) {
+    const graph = libs.graph("SE");
+    t.deepEqual(graph.findPath(), [[0, 0], [1, 0]]);
+    t.end();
+});
+
+test("find rectilinear path", function (t) {
+    const graph = libs.graph("SbcdE");
+    t.deepEqual(graph.findPath(), [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0]]);
     t.end();
 });
 

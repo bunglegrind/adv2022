@@ -1,4 +1,5 @@
 import * as R from "ramda";
+import tree from "./tree.js";
 
 function find(l, m) {
     let res;
@@ -46,22 +47,48 @@ function graph(data) {
         return matrix[x][y];
     }
 
+    function isInMatrix([x, y]) {
+        return (
+            (x >= 0 && x < rows)
+            && (y >= 0 && y < columns)
+        );
+    }
+    
+    function getSurroundings([x, y]) {
+        const set = [
+            [x - 1, y],
+            [x + 1, y],
+            [x, y - 1],
+            [x, y  + 1]
+        ];
+        return R.filter(isInMatrix, set);
+    }
+
     const walkable = (a) => (b) => ((a + 1) === b) || (a > b);
     function dirs(position) {
-        const isWalkable = walkable(matrix.get(position));
-        const d = [];
-
-        return d;
-
+        const isWalkable = walkable(get(position));
+        return R.filter(R.pipe(
+            get,
+            isWalkable
+        ))(getSurroundings(position));
     }
+
+    function findPath(node = s) {
+        const paths = tree(node, 1);//size = 1 not a leaf
+        R.forEach((d) => paths.addChild(d), dirs(node));
+       return [[0, 0], [1, 0]]; 
+    }
+
     return Object.freeze({
         get,
-        dirs
+        dirs,
+        findPath
     });
 }
 
 export default Object.freeze({
     parseInput,
+    graph,
     exec: {
         a: () => {},
         b: () => {}
